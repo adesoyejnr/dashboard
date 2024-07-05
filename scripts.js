@@ -1,47 +1,39 @@
 // scripts.js
 
-document.querySelectorAll('.sidebar ul li a').forEach(link => {
-    link.addEventListener('click', function() {
-        document.querySelector('.sidebar ul li a.active')?.classList.remove('active');
-        this.classList.add('active');
-    });
-});
+// Add this to the existing JavaScript
 
-// Chart.js - Render a simple bar chart
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [{
-            label: 'Revenue',
-            data: [12000, 19000, 3000, 5000, 2000, 30000],
-            backgroundColor: 'rgba(52, 152, 219, 0.5)',
-            borderColor: 'rgba(52, 152, 219, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+// Demo credentials
+const demoEmail = "demo@example.com";
+const demoPassword = "password123";
+
+// Handle login form submission
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (email === demoEmail && password === demoPassword) {
+        // Save login status to local storage
+        localStorage.setItem('isLoggedIn', 'true');
+        // Redirect to the dashboard page
+        window.location.href = 'index.html';
+    } else {
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = 'Invalid email or password.';
     }
 });
 
-// Modal functionality
-const modal = document.getElementById('myModal');
-const openModalBtn = document.getElementById('openModalBtn');
-const closeBtn = document.getElementsByClassName('close')[0];
-
-openModalBtn.onclick = function() {
-    modal.style.display = 'block';
+// Check login status
+function checkLoginStatus() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+        window.location.href = 'login.html';
+    }
 }
 
-closeBtn.onclick = function() {
-    modal.style.display = 'none';
+// Call checkLoginStatus on dashboard page load
+if (window.location.pathname.endsWith('index.html')) {
+    checkLoginStatus();
 }
-
-window.onclick = function(event) {
-    if (event
