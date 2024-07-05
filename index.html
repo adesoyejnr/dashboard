@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="sidebar">
         <h2>Dashboard</h2>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="#" class="active">Home</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
@@ -37,6 +38,61 @@
             <div class="card">
                 <h3>Feedback</h3>
                 <p>89</p>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="table-container">
+            <h3>Recent Transactions</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2024-07-01</td>
+                        <td>$100</td>
+                        <td>Completed</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2024-07-02</td>
+                        <td>$200</td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2024-07-03</td>
+                        <td>$150</td>
+                        <td>Completed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="openModalBtn">Add New Item</button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Add New Item</h2>
+                <form id="addItemForm">
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" id="itemName" name="itemName" required>
+                    <label for="itemAmount">Amount:</label>
+                    <input type="number" id="itemAmount" name="itemAmount" required>
+                    <label for="itemStatus">Status:</label>
+                    <select id="itemStatus" name="itemStatus">
+                        <option value="Completed">Completed</option>
+                        <option value="Pending">Pending</option>
+                    </select>
+                    <button type="submit">Add Item</button>
+                </form>
             </div>
         </div>
     </div>
