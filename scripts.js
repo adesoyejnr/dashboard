@@ -23,7 +23,7 @@ document.getElementById('loginForm')?.addEventListener('submit', function(event)
     }
 });
 
-// Check login status
+// Checking login status
 function checkLoginStatus() {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
